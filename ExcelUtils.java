@@ -1,4 +1,4 @@
-package utilities;
+package jdbcconnection;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
@@ -48,6 +48,9 @@ public class ExcelUtils {
 	public static void setCellData(String value,  int rowNum, int colNum) {
            try{
               row  = excelWSheet.getRow(rowNum);
+              if(row==null){
+            	  	row = excelWSheet.createRow(rowNum);
+              }
               cell = row.getCell(colNum);
                 
               if(cell == null) {
